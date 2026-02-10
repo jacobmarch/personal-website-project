@@ -1,4 +1,5 @@
 :root {
+  --scroll-progress: 0;
   --bg: #060606;
   --panel: rgba(16, 16, 16, 0.78);
   --panel-border: rgba(255, 255, 255, 0.24);
@@ -68,6 +69,58 @@ body {
   right: -100px;
   background: #8f8f8f;
   animation-delay: 1.8s;
+}
+
+.bg-geometry {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.geo-shape {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.23);
+  transition: transform 120ms linear;
+}
+
+.geo-shape-square {
+  width: 180px;
+  height: 180px;
+  top: 14%;
+  right: 8%;
+  transform: translateY(calc(var(--scroll-progress) * 140px))
+    rotate(calc(var(--scroll-progress) * 95deg));
+}
+
+.geo-shape-diamond {
+  width: 110px;
+  height: 110px;
+  top: 48%;
+  left: 7%;
+  transform: translateY(calc(var(--scroll-progress) * -170px))
+    rotate(calc(45deg + var(--scroll-progress) * 120deg));
+}
+
+.geo-shape-line {
+  width: 2px;
+  height: 260px;
+  top: 26%;
+  left: 52%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  transform: translateY(calc(var(--scroll-progress) * 210px))
+    rotate(calc(var(--scroll-progress) * 28deg));
+}
+
+.geo-shape-ring {
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  bottom: 8%;
+  right: 20%;
+  transform: translateY(calc(var(--scroll-progress) * -120px))
+    scale(calc(1 + var(--scroll-progress) * 0.18));
 }
 
 .site-header,
@@ -363,6 +416,30 @@ h1 {
 
   .post-wrapper {
     padding: 1.1rem;
+  }
+
+  .geo-shape-square {
+    width: 120px;
+    height: 120px;
+    right: 4%;
+  }
+
+  .geo-shape-diamond {
+    width: 84px;
+    height: 84px;
+  }
+
+  .geo-shape-ring {
+    width: 140px;
+    height: 140px;
+    right: 8%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .geo-shape {
+    transition: none;
+    transform: none;
   }
 }
 
