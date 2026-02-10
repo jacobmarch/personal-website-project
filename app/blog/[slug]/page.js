@@ -32,8 +32,13 @@ export default async function BlogPostPage({ params }) {
   }
 
   return (
-    <main className="blog-main">
-      <article className="post-wrapper">
+    <main className="blog-main blog-main-vibe">
+      <header className="blog-site-header">
+        <Link className="blog-home-link" href="/">
+          Return to Main Page
+        </Link>
+      </header>
+      <article className="post-wrapper post-wrapper-vibe">
         <p className="meta">{formatDisplayDate(post.date)}</p>
         <h1>{post.title}</h1>
         {post.tags?.length ? <p className="tags">{post.tags.join(" • ")}</p> : null}
@@ -43,7 +48,7 @@ export default async function BlogPostPage({ params }) {
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         ></div>
 
-        <Link className="button button-ghost" href="/blog">
+        <Link className="mode-chip" href="/blog">
           Back to Blog
         </Link>
       </article>

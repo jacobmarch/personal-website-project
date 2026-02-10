@@ -67,7 +67,7 @@ export default function BlogTagSearch({ posts }) {
 
   return (
     <>
-      <div className="blog-controls">
+      <div className="blog-controls blog-controls-vibe">
         <div className="blog-toolbar">
           <div className="blog-toolbar-actions">
             <span className="mode-chip mode-chip-active" aria-current="page">
@@ -77,38 +77,44 @@ export default function BlogTagSearch({ posts }) {
               Recent Mode
             </Link>
           </div>
-          <div className="blog-search-wrap">
-            <input
-              id="tag-search"
-              className="blog-search-input"
-              type="search"
-              placeholder="Search by tag"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              aria-label="Search posts by tag"
-            />
-            {suggestedTags.length ? (
-              <div className="tag-suggestions">
-                {suggestedTags.map((tag) => (
-                  <button
-                    type="button"
-                    className="tag-suggestion"
-                    key={`suggestion-${tag}`}
-                    onClick={() => setQuery(tag)}
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-            ) : null}
-          </div>
+          <p className="blog-mode-note">Pinned posts first, then newest entries.</p>
         </div>
+
+        <div className="blog-search-wrap">
+          <input
+            id="tag-search"
+            className="blog-search-input"
+            type="search"
+            placeholder="Search by tag"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            aria-label="Search posts by tag"
+          />
+          {suggestedTags.length ? (
+            <div className="tag-suggestions">
+              {suggestedTags.map((tag) => (
+                <button
+                  type="button"
+                  className="tag-suggestion"
+                  key={`suggestion-${tag}`}
+                  onClick={() => setQuery(tag)}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+          ) : null}
+        </div>
+
+        <p className="blog-results-note">
+          Showing {filteredPosts.length} of {posts.length} posts
+        </p>
       </div>
 
-      <section className="blog-list">
+      <section className="blog-list blog-feed-grid">
         {filteredPosts.length ? (
           filteredPosts.map((post) => (
-            <article className="blog-row" key={post.slug}>
+            <article className="blog-row blog-card" key={post.slug}>
               <p className="meta">
                 {post.featured ? "Pinned • " : ""}
                 {formatDisplayDate(post.date)}

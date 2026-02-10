@@ -11,12 +11,18 @@ export default function LatestPostsPage() {
   const posts = getLatestPosts();
 
   return (
-    <main className="blog-main">
-      <header className="blog-header">
-        <p className="eyebrow">Latest</p>
+    <main className="blog-main blog-main-vibe">
+      <header className="blog-site-header">
+        <Link className="blog-home-link" href="/">
+          Return to Main Page
+        </Link>
+      </header>
+
+      <section className="blog-header blog-header-vibe">
+        <p className="eyebrow blog-kicker">Recent Journal</p>
         <h1>Most recent posts, newest first.</h1>
-        <p>Mode: Recent. Sorted purely by publish date.</p>
-        <div className="blog-controls">
+        <p>A chronological stream with no pinned prioritization.</p>
+        <div className="blog-controls blog-controls-vibe">
           <div className="blog-toolbar">
             <div className="blog-toolbar-actions">
               <Link className="mode-chip" href="/blog">
@@ -26,13 +32,14 @@ export default function LatestPostsPage() {
                 Recent Mode
               </span>
             </div>
+            <p className="blog-mode-note">Sorted strictly by publication date.</p>
           </div>
         </div>
-      </header>
+      </section>
 
-      <section className="blog-list">
+      <section className="blog-list blog-feed-grid">
         {posts.map((post) => (
-          <article className="blog-row" key={post.slug}>
+          <article className="blog-row blog-card" key={post.slug}>
             <p className="meta">{formatDisplayDate(post.date)}</p>
             <h2>
               <Link href={`/blog/${post.slug}`}>{post.title}</Link>
