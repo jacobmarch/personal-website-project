@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllPostSlugs, getPostBySlug } from "../../../lib/blog";
+import { formatDisplayDate } from "../../../lib/date";
 
 export async function generateStaticParams() {
   return getAllPostSlugs().map((slug) => ({ slug }));
@@ -22,17 +23,6 @@ export async function generateMetadata({ params }) {
   };
 }
 
-function formatDate(dateString) {
-  const parsed = new Date(dateString);
-  if (Number.isNaN(parsed.getTime())) return "Draft";
-
-  return new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric"
-  }).format(parsed);
-}
-
 export default async function BlogPostPage({ params }) {
   const { slug } = params;
   const post = await getPostBySlug(slug);
@@ -42,9 +32,14 @@ export default async function BlogPostPage({ params }) {
   }
 
   return (
-    <main className="blog-main">
-      <article className="post-wrapper">
-        <p className="meta">{formatDate(post.date)}</p>
+    <main className="blog-main blog-main-vibe">
+      <header className="blog-site-header">
+        <Link className="blog-home-link" href="/">
+          Return to Main Page
+        </Link>
+      </header>
+      <article className="post-wrapper post-wrapper-vibe">
+        <p className="meta">{formatDisplayDate(post.date)}</p>
         <h1>{post.title}</h1>
         {post.tags?.length ? <p className="tags">{post.tags.join(" • ")}</p> : null}
 
@@ -53,7 +48,7 @@ export default async function BlogPostPage({ params }) {
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         ></div>
 
-        <Link className="button button-ghost" href="/blog">
+        <Link className="mode-chip" href="/blog">
           Back to Blog
         </Link>
       </article>

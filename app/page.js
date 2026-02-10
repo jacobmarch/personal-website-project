@@ -1,22 +1,11 @@
 import Link from "next/link";
 import RevealOnScroll from "../components/reveal-on-scroll";
 import ScrollGeometry from "../components/scroll-geometry";
-import { getAllPostsMeta } from "../lib/blog";
-
-function formatDate(dateString) {
-  if (!dateString) return "Draft";
-  const parsed = new Date(dateString);
-  if (Number.isNaN(parsed.getTime())) return "Draft";
-
-  return new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric"
-  }).format(parsed);
-}
+import { getLatestPosts } from "../lib/blog";
+import { formatDisplayDate } from "../lib/date";
 
 export default function HomePage() {
-  const latestPosts = getAllPostsMeta().slice(0, 2);
+  const latestPosts = getLatestPosts().slice(0, 2);
   const year = new Date().getFullYear();
 
   return (
@@ -56,7 +45,7 @@ export default function HomePage() {
             <Link className="button button-primary" href="/blog">
               Read the Blog
             </Link>
-            <Link className="button button-ghost" href="/blog">
+            <Link className="button button-ghost" href="/blog/latest">
               View Latest Posts
             </Link>
           </div>
@@ -103,7 +92,7 @@ export default function HomePage() {
             {latestPosts.length ? (
               latestPosts.map((post) => (
                 <article className="post-card" key={post.slug}>
-                  <p className="meta">{formatDate(post.date)}</p>
+                  <p className="meta">{formatDisplayDate(post.date)}</p>
                   <h3>
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h3>

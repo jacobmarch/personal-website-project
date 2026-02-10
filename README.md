@@ -28,6 +28,7 @@ Open `http://localhost:3000`.
 title: "Your post title"
 date: "2026-02-10"
 excerpt: "Short summary"
+featured: false
 tags:
   - tag-one
   - tag-two
@@ -35,7 +36,9 @@ tags:
 ```
 
 3. Write markdown content below the frontmatter
-4. Visit `/blog` to see it listed
+4. Set `featured: true` to pin that post toward the top of `/blog`
+5. Visit `/blog` to see featured-first ordering
+6. Visit `/blog/latest` to see strict newest-first ordering
 
 ## Future page ideas
 

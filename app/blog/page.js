@@ -1,50 +1,30 @@
 import Link from "next/link";
-import { getAllPostsMeta } from "../../lib/blog";
+import { getPostsFeaturedFirst } from "../../lib/blog";
+import BlogTagSearch from "../../components/blog-tag-search";
 
 export const metadata = {
   title: "Blog | Jacob",
   description: "Developer and creator blog posts"
 };
 
-function formatDate(dateString) {
-  const parsed = new Date(dateString);
-  if (Number.isNaN(parsed.getTime())) return "Draft";
-
-  return new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric"
-  }).format(parsed);
-}
-
 export default function BlogPage() {
-  const posts = getAllPostsMeta();
+  const posts = getPostsFeaturedFirst();
 
   return (
-    <main className="blog-main">
-      <header className="blog-header">
-        <p className="eyebrow">Blog</p>
-        <h1>Notes on building, systems, and creative work.</h1>
-        <p>
-          New entries are generated from markdown files in
-          <code> content/blog</code>.
-        </p>
-        <Link className="button button-ghost" href="/">
-          Back Home
+    <main className="blog-main blog-main-vibe">
+      <header className="blog-site-header">
+        <Link className="blog-home-link" href="/">
+          Return to Main Page
         </Link>
       </header>
 
-      <section className="blog-list">
-        {posts.map((post) => (
-          <article className="blog-row" key={post.slug}>
-            <p className="meta">{formatDate(post.date)}</p>
-            <h2>
-              <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-            </h2>
-            <p>{post.excerpt || "Read the full post."}</p>
-          </article>
-        ))}
+      <section className="blog-header blog-header-vibe">
+        <p className="eyebrow blog-kicker">Featured Journal</p>
+        <h1>Notes on building, systems, and creative work.</h1>
+        <p>Curated entries with pinned posts surfaced first.</p>
       </section>
+
+      <BlogTagSearch posts={posts} />
     </main>
   );
 }
