@@ -1,5 +1,6 @@
 import Link from "next/link";
 import RevealOnScroll from "../components/reveal-on-scroll";
+import ScrollGeometry from "../components/scroll-geometry";
 import { getAllPostsMeta } from "../lib/blog";
 
 function formatDate(dateString) {
@@ -21,9 +22,16 @@ export default function HomePage() {
   return (
     <>
       <RevealOnScroll />
+      <ScrollGeometry />
       <div className="bg-grid" aria-hidden="true"></div>
       <div className="bg-glow bg-glow-one" aria-hidden="true"></div>
       <div className="bg-glow bg-glow-two" aria-hidden="true"></div>
+      <div className="bg-geometry" aria-hidden="true">
+        <span className="geo-shape geo-shape-square"></span>
+        <span className="geo-shape geo-shape-diamond"></span>
+        <span className="geo-shape geo-shape-line"></span>
+        <span className="geo-shape geo-shape-ring"></span>
+      </div>
 
       <header className="site-header">
         <a href="#" className="brand">
