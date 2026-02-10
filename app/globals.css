@@ -317,17 +317,107 @@ h1 {
 }
 
 .blog-header {
-  max-width: 760px;
-  margin-bottom: 1.5rem;
+  max-width: 860px;
+  margin-bottom: 0.9rem;
 }
 
 .blog-header p {
   color: var(--muted);
+  margin: 0;
+}
+
+.blog-header h1 {
+  margin-bottom: 0.7rem;
 }
 
 .blog-list {
   display: grid;
   gap: 0.8rem;
+  margin-top: 0.95rem;
+}
+
+.blog-controls {
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  background: rgba(10, 10, 10, 0.55);
+  border-radius: 14px;
+  padding: 0.9rem;
+  margin-top: 0.9rem;
+}
+
+.blog-search-wrap {
+  margin-left: 0;
+}
+
+.blog-search-input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(10, 10, 10, 0.72);
+  color: var(--text);
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+}
+
+.blog-toolbar {
+  display: grid;
+  grid-template-columns: auto minmax(280px, 560px);
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.blog-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.mode-chip {
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.46rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+.mode-chip-active {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.18);
+  color: #0a0a0a;
+}
+
+.blog-search-input::placeholder {
+  color: #9a9a9a;
+}
+
+.blog-search-input:focus {
+  outline: 1px solid rgba(255, 255, 255, 0.45);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.tag-suggestions {
+  margin-top: 0.55rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tag-suggestion {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.12rem 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.tag-suggestion:hover {
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .blog-row h2 {
@@ -337,6 +427,23 @@ h1 {
 
 .blog-row a {
   color: var(--text);
+}
+
+.tag-row {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tag-pill {
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.12rem 0.5rem;
+  font-size: 0.8rem;
 }
 
 .post-wrapper {
@@ -416,6 +523,23 @@ h1 {
 
   .post-wrapper {
     padding: 1.1rem;
+  }
+
+  .blog-toolbar {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .blog-search-wrap {
+    width: 100%;
+  }
+
+  .blog-search-input {
+    width: 100%;
+  }
+
+  .tag-suggestions {
+    justify-content: flex-start;
   }
 
   .geo-shape-square {

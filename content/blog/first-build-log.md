@@ -2,6 +2,7 @@
 title: "First Build Log: Launching the Site"
 date: "2026-02-10"
 excerpt: "A short kickoff note on how this portfolio and blog are structured."
+featured: true
 tags:
   - nextjs
   - portfolio
