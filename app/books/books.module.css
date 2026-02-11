@@ -1,0 +1,298 @@
+.routeShell {
+  margin: -1.25rem;
+  min-height: 100vh;
+}
+
+.main {
+  position: relative;
+  min-height: 100vh;
+  overflow: clip;
+  padding: 1.6rem clamp(1rem, 3vw, 2.2rem) 2.2rem;
+  color: #21261f;
+  background: linear-gradient(180deg, #f8f7f3 0%, #eceae2 100%);
+  font-family: "IBM Plex Sans", "Avenir Next", "Segoe UI", sans-serif;
+}
+
+.main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(95, 103, 88, 0.08) 0 1px,
+    rgba(95, 103, 88, 0) 1px 34px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.main::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: clamp(20px, 4vw, 42px);
+  width: 1px;
+  background: rgba(166, 91, 91, 0.35);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.canvas {
+  position: relative;
+  z-index: 1;
+  width: min(980px, 100%);
+  margin: 0 auto;
+}
+
+.siteHeader {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.9rem;
+}
+
+.homeLink {
+  display: inline-block;
+  text-decoration: none;
+  color: #33453f;
+  border: 1px solid rgba(71, 88, 74, 0.38);
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  padding: 0.38rem 0.78rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.homeLink:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(71, 88, 74, 0.62);
+}
+
+.hero {
+  margin-bottom: 1rem;
+  border: 1px solid rgba(123, 132, 118, 0.42);
+  border-radius: 14px;
+  padding: 1.1rem clamp(0.95rem, 2vw, 1.4rem);
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 8px 16px rgba(34, 38, 31, 0.06);
+}
+
+.kicker {
+  margin: 0 0 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: #4d5b4f;
+  font-weight: 700;
+}
+
+.hero h1 {
+  margin: 0 0 0.58rem;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  font-size: clamp(1.95rem, 4.7vw, 3.1rem);
+  line-height: 1.04;
+  color: #1e241e;
+}
+
+.hero p {
+  margin: 0;
+  max-width: 72ch;
+  color: #3e4438;
+}
+
+.hero code {
+  background: rgba(71, 88, 74, 0.12);
+  border: 1px solid rgba(71, 88, 74, 0.28);
+  border-radius: 6px;
+  padding: 0.08rem 0.32rem;
+  color: #2d3b35;
+}
+
+.shelfGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  gap: 0.9rem;
+}
+
+.card {
+  border: 1px solid rgba(123, 132, 118, 0.42);
+  border-radius: 12px;
+  padding: 0.95rem;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 8px 14px rgba(34, 38, 31, 0.05);
+}
+
+.cardLabel {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.7rem;
+  color: #556254;
+  border-bottom: 1px solid rgba(123, 132, 118, 0.38);
+  padding-bottom: 0.1rem;
+}
+
+.meta {
+  margin: 0;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4f5b4f;
+  font-weight: 700;
+}
+
+.cardTitle {
+  margin: 0.4rem 0 0.45rem;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  font-size: clamp(1.2rem, 2.4vw, 1.62rem);
+  line-height: 1.14;
+}
+
+.cardTitle a,
+.cardTitle a:visited {
+  color: #1f251e;
+}
+
+.cardTitle a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.author {
+  margin: 0;
+  color: #4a4f45;
+  font-style: italic;
+}
+
+.rating {
+  margin: 0.3rem 0 0;
+  color: #394c3d;
+  font-weight: 600;
+}
+
+.summary {
+  margin: 0.45rem 0 0;
+  color: #383f35;
+}
+
+.tagRow {
+  margin-top: 0.65rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  border: 1px solid rgba(123, 132, 118, 0.4);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  padding: 0.12rem 0.48rem;
+  font-size: 0.76rem;
+  color: #414b40;
+}
+
+.review {
+  max-width: 880px;
+  margin: 0 auto;
+  border: 1px solid rgba(123, 132, 118, 0.45);
+  border-radius: 14px;
+  padding: 1.25rem clamp(0.95rem, 2.3vw, 1.55rem);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 10px 18px rgba(34, 38, 31, 0.07);
+}
+
+.reviewTitle {
+  margin: 0.35rem 0 0.32rem;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  font-size: clamp(2rem, 4.2vw, 2.9rem);
+  line-height: 1.06;
+  color: #1d241d;
+}
+
+.tagLine {
+  color: #495549;
+  margin: 0.5rem 0 0.95rem;
+}
+
+.reviewContent {
+  color: #2f352c;
+  margin-bottom: 1.3rem;
+}
+
+.reviewContent h2,
+.reviewContent h3,
+.reviewContent h4 {
+  margin-top: 1.3rem;
+  margin-bottom: 0.65rem;
+  color: #1f251f;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+}
+
+.reviewContent p,
+.reviewContent ul,
+.reviewContent ol {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.reviewContent a,
+.reviewContent a:visited {
+  color: #314d3d;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+.reviewContent code {
+  background: rgba(71, 88, 74, 0.12);
+  border: 1px solid rgba(71, 88, 74, 0.26);
+  border-radius: 6px;
+  padding: 0.1rem 0.3rem;
+  color: #2d3f34;
+}
+
+.reviewContent pre {
+  overflow-x: auto;
+  border: 1px solid rgba(71, 88, 74, 0.4);
+  border-radius: 12px;
+  padding: 0.8rem;
+  background: #f3f5f0;
+  color: #243026;
+}
+
+.reviewContent blockquote {
+  margin: 0.95rem 0;
+  padding: 0.15rem 0.85rem;
+  border-left: 3px solid rgba(71, 88, 74, 0.52);
+  background: rgba(71, 88, 74, 0.08);
+  color: #3a463b;
+}
+
+@media (max-width: 700px) {
+  .routeShell {
+    margin: -1rem;
+  }
+
+  .main {
+    padding: 1.15rem 0.9rem 1.5rem;
+  }
+
+  .siteHeader {
+    justify-content: flex-start;
+    margin-bottom: 0.72rem;
+  }
+
+  .hero {
+    padding: 0.95rem;
+  }
+
+  .shelfGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .review {
+    padding: 1rem;
+  }
+}
