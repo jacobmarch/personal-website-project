@@ -312,6 +312,13 @@ h1 {
   font-size: 0.9rem;
 }
 
+.panel-action-row {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
 .blog-main {
   padding: 3rem 0 2rem;
 }

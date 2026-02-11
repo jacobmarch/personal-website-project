@@ -2,10 +2,12 @@ import Link from "next/link";
 import RevealOnScroll from "../components/reveal-on-scroll";
 import ScrollGeometry from "../components/scroll-geometry";
 import { getLatestPosts } from "../lib/blog";
+import { getLatestBookReviews } from "../lib/books";
 import { formatDisplayDate } from "../lib/date";
 
 export default function HomePage() {
   const latestPosts = getLatestPosts().slice(0, 2);
+  const latestBookReviews = getLatestBookReviews().slice(0, 2);
   const year = new Date().getFullYear();
 
   return (
@@ -30,6 +32,7 @@ export default function HomePage() {
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
           <a href="#blog">Blog</a>
+          <Link href="/books">Book Reviews</Link>
         </nav>
       </header>
 
@@ -47,6 +50,9 @@ export default function HomePage() {
             </Link>
             <Link className="button button-ghost" href="/blog/latest">
               View Latest Posts
+            </Link>
+            <Link className="button button-ghost" href="/books">
+              Browse Book Reviews
             </Link>
           </div>
         </section>
@@ -106,6 +112,40 @@ export default function HomePage() {
                 <p>The blog index updates automatically from frontmatter.</p>
               </article>
             )}
+          </div>
+        </section>
+
+        <section id="books" className="panel reveal">
+          <div className="section-heading">
+            <h2>Book Reviews</h2>
+            <p>Academic-library style reading notes from local markdown files.</p>
+          </div>
+          <div className="post-list">
+            {latestBookReviews.length ? (
+              latestBookReviews.map((review) => (
+                <article className="post-card" key={review.slug}>
+                  <p className="meta">{formatDisplayDate(review.date)}</p>
+                  <h3>
+                    <Link href={`/books/${review.slug}`}>{review.title}</Link>
+                  </h3>
+                  <p>
+                    {review.author ? `by ${review.author} • ` : ""}
+                    {review.excerpt || "Open this review to read the full write-up."}
+                  </p>
+                </article>
+              ))
+            ) : (
+              <article className="post-card">
+                <p className="meta">No reviews yet</p>
+                <h3>Drop markdown files into content/books</h3>
+                <p>The book reviews index updates automatically from frontmatter.</p>
+              </article>
+            )}
+          </div>
+          <div className="panel-action-row">
+            <Link className="button button-ghost" href="/books">
+              Open Full Book Review Shelf
+            </Link>
           </div>
         </section>
       </main>
